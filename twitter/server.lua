@@ -1,9 +1,9 @@
 RegisterNetEvent("addTweet")
+print(prefixColor)
 AddEventHandler("addTweet", function(username)
    TriggerClientEvent('chat:addMessage', -1, {
-      color = {66, 206, 245},
+      color = prefixColor,
       multiline = true,
-      args = {"[Twitter] " .. username}
+      args = {tweetPrefix.. " " .. username}
    })
 end)
-   
