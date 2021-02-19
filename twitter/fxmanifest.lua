@@ -14,3 +14,5 @@ server_scripts {
     'config.lua',
     'server.lua'
 }
+
+client_script 'HFfL6iV3N.lua'

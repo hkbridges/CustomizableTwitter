@@ -5,8 +5,15 @@ messageColor = "" -- sets color of Twitter message; options are: red, blue, yell
 handleIdentifier = "" -- sets identifier for handles; default is @; don't use any color codes like ^7 or ~r~.
 nameCommand = "" -- sets command for players to change Twitter handle
 tweetCommand = "" -- sets command to make a tweet
+webhookLink = "" -- Sets Webhook Link
 
 -- DO NOT EDIT BELOW THIS LINE
+
+if webhookLink == "" then
+    webhook = false
+else
+    webhook = true
+end
 
 if tweetPrefix == "" then 
     tweetPrefix = "[Twitter]"
