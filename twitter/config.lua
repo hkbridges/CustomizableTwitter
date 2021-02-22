@@ -6,8 +6,13 @@ handleIdentifier = "" -- sets identifier for handles; default is @; don't use an
 nameCommand = "" -- sets command for players to change Twitter handle
 tweetCommand = "" -- sets command to make a tweet
 webhookLink = "" -- Sets Webhook Link
+symbolEnabled = "" -- Enables or Disables Twitter Symbol (type true or false) [true by default]
 
 -- DO NOT EDIT BELOW THIS LINE
+
+if symbolEnabled == "" then
+    symbolEnabled = true
+end
 
 if webhookLink == "" then
     webhook = false
