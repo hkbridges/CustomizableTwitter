@@ -15,4 +15,3 @@ server_scripts {
     'server.lua'
 }
 
-client_script 'HFfL6iV3N.lua'
