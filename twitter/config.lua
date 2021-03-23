@@ -12,6 +12,9 @@ symbolEnabled = "" -- Enables or Disables Twitter Symbol (type true or false) [t
 
 if symbolEnabled == "" then
     symbolEnabled = true
+elseif symbolEnabled == "true" then
+    symbolEnabled = true
+else symbolEnabled = false
 end
 
 if webhookLink == "" then

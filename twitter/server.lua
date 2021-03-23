@@ -6,14 +6,14 @@ end)
 RegisterNetEvent("namelogging")
 AddEventHandler("namelogging", function(tusername, logname)
    if webhook then
-      PerformHttpRequest(webhookLink, function(err, text, headers) end, 'POST', json.encode({username = "Twitter Name Change", content = "```".. logname.. "" .. " set their handle to "..tusername .. "```"}), { ['Content-Type'] = 'application/json' })
+      PerformHttpRequest(webhookLink, function(err, text, headers) end, 'POST', json.encode({username = "Twitter Name Change", content = "```".. logname.. "" .. " set their handle to "..tusername .. "```", avatar_url = "https://i.imgur.com/HC5ViBC.png"}), { ['Content-Type'] = 'application/json' })
    end
 end)
 
 RegisterNetEvent("tweetlogging")
 AddEventHandler("tweetlogging", function(tusername, message, loggingname)
    if webhook then
-      PerformHttpRequest(webhookLink, function(err, text, headers) end, 'POST', json.encode({username = "Twitter Logs", content = "```".. "".. loggingname.. "" .. " tweeted as @".. tusername .. " | " .. '"' .. message .. '"'.. "```"}), { ['Content-Type'] = 'application/json' })
+      PerformHttpRequest(webhookLink, function(err, text, headers) end, 'POST', json.encode({username = "Twitter Logs", content = "```".. "".. loggingname.. "" .. " tweeted as @".. tusername .. " | " .. '"' .. message .. '"'.. "```", avatar_url = "https://www.southernbank.com/wp-content/uploads/twitter.png"}), { ['Content-Type'] = 'application/json' })
    end
 end)
 
@@ -25,11 +25,20 @@ end
 
 RegisterNetEvent("addTweet")
 AddEventHandler("addTweet", function(fulluser, fullmessage)
-   TriggerClientEvent('chat:addMessage', -1, {
-      templateId = 'tweet',
-      color = prefixColor,
-      multiline = true,
-      args = {tweetPrefix.. " " .. fulluser, fullmessage}
-   })
+   if symbolEnabled then
+      TriggerClientEvent('chat:addMessage', -1, {
+         templateId = 'tweet',
+         color = prefixColor,
+         multiline = true,
+         args = {tweetPrefix.. " " .. fulluser, fullmessage}
+      })
+   else
+      TriggerClientEvent('chat:addMessage', -1, {
+         color = prefixColor,
+         multiline = true,
+         args = {tweetPrefix.. " " .. fulluser, fullmessage}
+      })
+   end
+   
 end)
 

@@ -3,10 +3,14 @@ if symbolEnabled then
 end
 
 RegisterCommand(nameCommand, function(source, args, rawCommand)
-    tusername = table.concat(args, " ")
+    if args[1] == nil then
+        notify("You must enter a name.")
+    else
+    tusername = args[1]
     logname = GetPlayerName(PlayerId())
     TriggerServerEvent("namelogging", tusername, logname)
     notify("~o~Handle set to".. "~w~" .." @".. tusername)
+    end
 end)
 
 RegisterCommand(tweetCommand, function(source, args, rawCommand)
@@ -26,7 +30,6 @@ RegisterNetEvent("dotweet")
 AddEventHandler("dotweet", function()
     fulluser = handleColor .. handleIdentifier .. tusername
     fullmessage = messageColor .. message
-    --TriggerServerEvent("addTweet", handleColor .. handleIdentifier..tusername ..":" .. " " .. messageColor .. message)
     TriggerServerEvent("addTweet", fulluser, fullmessage)
     loggingname = GetPlayerName(PlayerId())
     TriggerServerEvent("tweetlogging", tusername, message, loggingname)
